@@ -1,7 +1,7 @@
 {
   "name": "code-roaster",
-  "displayName": "code-roaster",
-  "description": "roasts your code",
+  "displayName": "Code Roaster - ChatGPT Integration",
+  "description": "A VS Code extension that integrates with ChatGPT API to answer questions and provide AI assistance",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.102.0"
@@ -14,10 +14,21 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-roaster.helloWorld",
-        "title": "Hello World"
+        "command": "code-roaster.roastMe",
+        "title": "Roast Me"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Code Roaster",
+      "properties": {
+        "code-roaster.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key for ChatGPT integration",
+          "scope": "application"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -28,14 +39,19 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.102.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "fs": "^0.0.1-security",
+    "play-sound": "^1.1.6"
   }
 }
